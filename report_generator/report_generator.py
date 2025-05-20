@@ -39,7 +39,7 @@ totalDiscardedBoard = 0
 # --------- NIST ---------
 #=========================
 if os.path.isdir(nistPath):
-    filenames = list(map(lambda x: nistPath + x + nistSubDir))
+    filenames = list(map(lambda x: nistPath + x + nistSubDir, nistDirs))
     filedata = {f: open(f, 'r') for f in filenames}
 
     for f in filedata.values():
@@ -51,7 +51,7 @@ if os.path.isdir(nistPath):
         # 3: counter for 2
         # 4: only the failed test names in list
         fails = ['', 0, '', 0, '']
-        key = lines[3].split('/')[7].split('.')[0]
+        key = lines[3].split('/')[-1].split('.')[0]
         for line in lines:
             if failedNist in line:
                 name = line.split(' ')[-1].split('\n')[0] + '; '
@@ -82,7 +82,7 @@ if os.path.isdir(nistPath):
 # -------- RABBIT --------
 #=========================
 if os.path.isdir(rabbitPath):
-    fileList = [f for f in listdir(rabbitPath) if isfile(join(rabbitPath, f))]
+    fileList = [join(rabbitPath, f) for f in listdir(rabbitPath) if isfile(join(rabbitPath, f))]
     filedata = {f: open(f, 'r') for f in fileList}
     for f in filedata.values():
         lines = f.readlines()
@@ -92,7 +92,7 @@ if os.path.isdir(rabbitPath):
         # 1: counter
         # 2: only failed test name
         fails = ['', 0, '']
-        key = lines[9].split('/')[1].split('.')[0]
+        key = lines[9].split('/')[-1].split('.')[0]
         try:
             index = lines.index(passedTests)
         except ValueError:
@@ -168,7 +168,7 @@ for j, x in enumerate(binsList):
     wrks1.write(2 + j, startCol + 4, binsList[x]['Rabbit'][2])#Name
     wrks1.write(2 + j, startCol + 5, binsList[x]['Rabbit'][1])#Counter
 
-wrks1.write(3 + 2, startCol + 7, 'SET RESULTS:', results_format)
+wrks1.write(3 + 2, startCol + 7, 'BIN RESULTS:', results_format)
 wrks1.write(3 + 3, startCol + 7, 'Golden:', results_format)
 wrks1.write(3 + 4, startCol + 7, 'Silver:', results_format)
 wrks1.write(3 + 5, startCol + 7, 'Bronze:', results_format)
@@ -199,12 +199,11 @@ totalDiscardedBoard += totalDiscarded
 dirs = os.listdir('.')
 set_dirs = [d for d in dirs if d.startswith("set")]
 
+wrks2 = workbook.add_worksheet('Crush & Alphabit')
 
 for i, set in enumerate(set_dirs):
     fileList = os.listdir(os.path.join('./', set))
     
-    wrks2 = workbook.add_worksheet('Crush & Alphabit')
-
     startRow = 0
     endRow = 2
     startCol = i * 3
@@ -296,21 +295,21 @@ for i, set in enumerate(set_dirs):
 
             f.close()
 
-        wrks2.write(2, startCol + 2, fails[2])
+    wrks2.write(2, startCol + 2, fails[2])
 
-        wrks2.write(endRow + 2, startCol, 'TOTAL:', results_format)
-        wrks2.write(endRow + 2, startCol + 1, count1)
-        wrks2.write(endRow + 2, startCol + 2, fails[1])
+    wrks2.write(endRow + 4, startCol, 'TOTAL:', results_format)
+    wrks2.write(endRow + 4, startCol + 1, count1)
+    wrks2.write(endRow + 4, startCol + 2, fails[1])
 
-        wrks2.write(endRow + 3, startCol, 'RESULT:', results_format)
+    wrks2.write(endRow + 5, startCol, 'RESULT:', results_format)
 
-        if not count1 and not fails[1]:
-            wrks2.write(endRow + 3, startCol + 1, 'Golden', results_format)
-        elif count1 < 6 and not fails[1]:
-            wrks2.write(endRow + 3, startCol + 1, 'Silver', results_format)
-        elif count1 <6 and fails[1] == 1:
-            wrks2.write(endRow + 3, startCol + 1, 'Bronze', results_format)
-        else:
-            wrks2.write(endRow + 3, startCol + 1, 'Discarded', results_format)
+    if not count1 and not fails[1]:
+        wrks2.write(endRow + 5, startCol + 1, 'Golden', results_format)
+    elif count1 < 6 and not fails[1]:
+        wrks2.write(endRow + 5, startCol + 1, 'Silver', results_format)
+    elif count1 <6 and fails[1] == 1:
+        wrks2.write(endRow + 5, startCol + 1, 'Bronze', results_format)
+    else:
+        wrks2.write(endRow + 5, startCol + 1, 'Discarded', results_format)
 
 workbook.close()

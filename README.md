@@ -22,6 +22,12 @@ The generated executables will be moved into /usr/local/bin/ and will have the f
 Set the workspace to be the folder where you want the results to be generated.
 There must be a folder called "binaries" or "bins" containing the binaries in the workspace.
 
+To run the tests, run the following command:
+
+```
+/usr/local/bin/runtests.sh
+```
+
 The structure of the folders is as follows:
 
 ```

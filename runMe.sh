@@ -17,6 +17,14 @@ chmod +x builder.sh
 chmod +x ./build/src/rap_testu01 
 cd ..
 
+# Set environment and create report generator
+cd report_generator
+chmod +x build.sh
+./build.sh
+cd ..
+
+cp ./report_generator/dist/report_generator ./test_lib
+
 # Copy the TestU01 runner in the new folder
 cp ./rap_testu01/build/src/rap_testu01 ./test_lib/testu01
 

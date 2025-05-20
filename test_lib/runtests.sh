@@ -5,4 +5,4 @@ nohup /usr/local/bin/test_lib/testu01/rap_testu01 &
 
 wait
 
-# When ready, run also final report script
+/usr/local/bin/test_lib/report_generator

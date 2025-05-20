@@ -422,3 +422,8 @@ rap_testu01/TestU01-2009/testu01/.libs/uweyl.o
 rap_testu01/TestU01-2009/testu01/.libs/uwu.o
 rap_testu01/TestU01-2009/testu01/.libs/uxorshift.o
 rap_testu01/TestU01-2009/testu01/.libs/vectorsF2.o
+
+./report_generator/.venv
+./report_generator/build
+./report_generator/dist
+./report_generator/report_generator.spec

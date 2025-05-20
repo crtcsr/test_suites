@@ -28,11 +28,11 @@ To run the tests, run the following command:
 /usr/local/bin/runtests.sh
 ```
 
-The structure of the folders is as follows:
+The structure of the folders, at the end of the tests, will be as follows:
 
 ```
 main_worskpace/
-    ├── binaries/
+    ├── binaries/ (or bins/)
     │   ├── binary1
     │   └── binary2
     ├── nist_results/
@@ -42,14 +42,17 @@ main_worskpace/
     ├── set_n/
     │   ├── xx-crush-tests.txt
     │   └── alphabit-results.txt
-    └── rabbit_results/
-        ├── file1.txt
-        ├── file2.txt
-        └── filexx..
+    ├── rabbit_results/
+    │   ├── file1.txt
+    │   ├── file2.txt
+    │   └── filexx..
+    └── report.xlsx
 ```
 
 The folder "nist_results" is generated automatically by the script.
 Each "set_n" folder is generated automatically based on the number of binary files to test (one set corresponds to 20 files), and will contain 96 crsuh test .txt files (one for each test) and an alphabit-results.txt.
 The "rabbit_results" is generated automatically and will contain one .txt file for each binary file tested.
+
+The report excel will be generated automatically at the end of the tests.
 
 Each $NISTFOLDER contains the results of a specific binary file.

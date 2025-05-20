@@ -1,14 +1,3 @@
-# Create the folder containing the final executables
-mkdir test_lib
-
-chmod +x runtests.sh
-cp runtests.sh ./test_lib
-
-cd test_lib
-mkdir nist
-mkdir testu01
-cd ..
-
 # Compile the nist test suite
 cd nist_tests
 make

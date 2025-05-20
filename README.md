@@ -25,8 +25,9 @@ There must be a folder called "binaries" or "bins" containing the binaries in th
 To run the tests, run the following command:
 
 ```
-/usr/local/bin/runtests.sh
+nohup /usr/local/bin/runtests.sh &
 ```
+As the tests will take a lot of time, this will ensure that they are ran in background.
 
 The structure of the folders, at the end of the tests, will be as follows:
 

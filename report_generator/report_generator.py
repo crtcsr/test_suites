@@ -24,7 +24,6 @@ failedTests = ' All other tests were passed\n'
 report_name = datetime.now().strftime("%Y%m%d_%H%M%S") + "_report"
 workbook = xlsxwriter.Workbook(f'{report_name}.xlsx')
 
-
 wrks1 = workbook.add_worksheet('NIST & Rabbit')
 
 nistDirs = os.listdir(nistPath)

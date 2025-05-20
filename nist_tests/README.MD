@@ -9,7 +9,7 @@ For example, in /usr/local/bin/, the structure will look as follows:
 
 ```
 /usr/local/bin/
-    └── nist_tests/
+    └── nist/
         ├── assess
         ├── run_nist_tests.sh/
         └── templates/

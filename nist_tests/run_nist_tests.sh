@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NIST_ASSESS_DIR="/usr/local/test_lib/nist/"
+NIST_ASSESS_DIR="/usr/local/bin/test_lib/nist/"
 CUR_DIR=$(pwd)
 
 export OMP_NUM_THREADS=32

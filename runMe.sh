@@ -31,4 +31,4 @@ cd ..
 # Copy the TestU01 runner in the new folder
 cp ./rap_testu01/build/src/rap_testu01 ./test_lib/testu01
 
-sudo mv ./test_lib /usr/local/test_lib
+sudo mv ./test_lib /usr/local/bin/test_lib

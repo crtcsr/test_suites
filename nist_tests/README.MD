@@ -32,17 +32,11 @@ main_worskpace/
     ├── binaries/
     │   ├── binary1
     │   └── binary2
-    ├── nist_results/
-    │   └── $NISTFOLDER/
-    │       ├── etc/
-    │       └── etc2/
-    └── templates/
-        ├── template1
-        ├── template2
-        └── template..
+    └── nist_results/
+        └── $NISTFOLDER/
+            ├── etc/
+            └── etc2/
 ```
 
 The folder "nist_results" is generated automatically by the script.
-The folder "templates" is copied automatically. If it is not present, some tests will fail.
-
 Each $NISTFOLDER contains the results of a specific binary file.

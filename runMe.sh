@@ -2,23 +2,24 @@
 mkdir test_lib
 
 chmod +x runtests.sh
-mv runtests.sh ./test_lib
+cp runtests.sh ./test_lib
 
 cd test_lib
 mkdir nist
 mkdir testu01
+cd ..
 
 # Compile the nist test suite
-cd nist_tests_threads
+cd nist_tests
 make
 chmod +x assess
 chmod +x run_nist_tests.sh
 cd ..
 
 # Copy the files in final executable folder
-cp ./nist_tests_threads/assess ./test_lib/nist/
-cp ./nist_tests_threads/run_nist_tests.sh ./test_lib/nist/
-rsync -avz ./nist_tests_threads/templates ./test_lib/nist/
+cp ./nist_tests/assess ./test_lib/nist/
+cp ./nist_tests/run_nist_tests.sh ./test_lib/nist/
+rsync -avz ./nist_tests/templates ./test_lib/nist/
 
 # Compile the TestU01 library and test runner
 cd rap_testu01
